@@ -1,0 +1,7 @@
+name: SimpleCloud-Placeholder
+version: 1.0
+author: MrManHD
+main: app.simplecloud.placeholder.plugin.paper.PaperPlugin
+
+depend:
+  - PlaceholderAPI

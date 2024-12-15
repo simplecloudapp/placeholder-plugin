@@ -4,7 +4,13 @@ package app.simplecloud.placeholder.plugin.paper.placeholder
  * @author Niklas Nieberler
  */
 
-data class Placeholder(
+data class Placeholder<T>(
     val key: String,
-    val handler: PlaceholderHandler
-)
+    private val handler: PlaceholderHandler<T>
+) {
+
+    fun invoke(value: T): Any? {
+        return this.handler.handle(value)
+    }
+
+}

@@ -18,8 +18,8 @@ class ServerPlaceholderExecutor : PlaceholderExecutor<Server>(
         Placeholder("server_numerical_id") { it.numericalId },
         Placeholder("server_ip") { it.ip },
         Placeholder("server_port") { it.port },
-        Placeholder("server_min_players") { it.minMemory },
         Placeholder("server_max_players") { it.maxPlayers },
+        Placeholder("server_min_memory") { it.minMemory },
         Placeholder("server_max_memory") { it.maxMemory },
         Placeholder("server_player_count") { it.playerCount },
         Placeholder("server_state") { it.state }

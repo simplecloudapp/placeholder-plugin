@@ -1,5 +1,6 @@
 package app.simplecloud.placeholder.plugin.paper.executor
 
+import app.simplecloud.controller.api.ControllerApi
 import app.simplecloud.controller.shared.server.Server
 import app.simplecloud.placeholder.plugin.paper.placeholder.Placeholder
 
@@ -11,7 +12,7 @@ class ServerPlaceholderExecutor : PlaceholderExecutor<Server>(
     { it.getServers().getServerById(System.getenv("SIMPLECLOUD_UNIQUE_ID")) }
 ) {
 
-    override fun getPlaceholders() = listOf<Placeholder<Server>>(
+    override fun getPlaceholders(controllerApi: ControllerApi.Coroutine) = listOf<Placeholder<Server>>(
         Placeholder("server_id") { it.uniqueId },
         Placeholder("server_type") { it.type },
         Placeholder("server_host") { it.host },

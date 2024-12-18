@@ -11,13 +11,13 @@ import app.simplecloud.placeholder.plugin.paper.executor.ServerPlaceholderExecut
 
 object PlaceholderExecutors {
 
-    private val executors = listOf<PlaceholderExecutor<out Any>>(
+    private val executors = listOf(
         ServerPlaceholderExecutor(),
         GroupPlaceholderExecutor()
     )
 
     suspend fun findPlaceholder(key: String, controllerApi: ControllerApi.Coroutine): String? {
-        val executor = this.executors.firstOrNull { it.hasPlaceholder(key) } ?: return null
+        val executor = this.executors.firstOrNull { it.hasPlaceholder(controllerApi, key) } ?: return null
         return executor.executePlaceholder(key, controllerApi).toString()
     }
 

@@ -60,7 +60,7 @@ tasks.withType<KotlinCompile> {
 
 tasks.named("shadowJar", ShadowJar::class) {
     mergeServiceFiles()
-    archiveFileName.set("simplecloud-placeholder.jar")
+    archiveFileName.set("${project.name}.jar")
 }
 
 tasks.processResources {

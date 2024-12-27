@@ -9,7 +9,7 @@ data class Placeholder<T>(
     private val handler: PlaceholderHandler<T>
 ) {
 
-    fun invoke(value: T): Any? {
+    suspend fun invoke(value: T): Any? {
         return this.handler.handle(value)
     }
 

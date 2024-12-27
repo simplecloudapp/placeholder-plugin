@@ -2,7 +2,6 @@ package app.simplecloud.placeholder.plugin.paper.executor.handler
 
 import app.simplecloud.controller.api.ControllerApi
 import app.simplecloud.placeholder.plugin.paper.executor.GroupPlaceholderExecutor
-import app.simplecloud.placeholder.plugin.paper.executor.PlaceholderExecutor
 import app.simplecloud.placeholder.plugin.paper.executor.ServerPlaceholderExecutor
 
 /**

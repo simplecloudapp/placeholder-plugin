@@ -6,6 +6,6 @@ package app.simplecloud.placeholder.plugin.paper.placeholder
 
 fun interface PlaceholderHandler<T> {
 
-    fun handle(value: T): Any?
+    suspend fun handle(value: T): Any?
 
 }

@@ -12,20 +12,20 @@ abstract class PlaceholderExecutor<T>(
     private val controllerHandler: PlaceholderControllerHandler<T>
 ) {
 
-    abstract fun getPlaceholders(): List<Placeholder<T>>
+    abstract fun getPlaceholders(controllerApi: ControllerApi.Coroutine): List<Placeholder<T>>
 
     suspend fun executePlaceholder(key: String, controllerApi: ControllerApi.Coroutine): Any? {
-        val placeholder = getPlaceholder(key) ?: return null
+        val placeholder = getPlaceholder(controllerApi, key) ?: return null
         val handle = this.controllerHandler.handle(controllerApi)
         return placeholder.invoke(handle)
     }
 
-    fun getPlaceholder(key: String): Placeholder<T>? {
-        return getPlaceholders().firstOrNull { it.key == key }
+    private fun getPlaceholder(controllerApi: ControllerApi.Coroutine, key: String): Placeholder<T>? {
+        return getPlaceholders(controllerApi).firstOrNull { it.key == key }
     }
 
-    fun hasPlaceholder(key: String): Boolean {
-        return getPlaceholder(key) != null
+    fun hasPlaceholder(controllerApi: ControllerApi.Coroutine, key: String): Boolean {
+        return getPlaceholder(controllerApi, key) != null
     }
 
 }

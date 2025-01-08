@@ -4,6 +4,7 @@ shadow = "8.3.3"
 simpleCloudController = "0.0.30-dev.e3e27fc"
 paper = "1.20.6-R0.1-SNAPSHOT"
 placeholder = "2.11.6"
+minotaur = "2.8.7"
 
 [libraries]
 kotlinJvm = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
@@ -21,3 +22,4 @@ simpleCloudController = ["simpleCloudControllerApi", "simpleCloudControllerShare
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+minotaur = { id = "com.modrinth.minotaur", version.ref = "minotaur" }

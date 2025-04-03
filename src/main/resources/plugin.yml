@@ -5,3 +5,4 @@ main: app.simplecloud.placeholder.plugin.paper.PaperPlugin
 
 depend:
   - PlaceholderAPI
+  - simplecloud-api

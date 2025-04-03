@@ -35,20 +35,15 @@ repositories {
 
 dependencies {
     testImplementation(rootProject.libs.kotlinTest)
-    implementation(rootProject.libs.kotlinJvm)
+    compileOnly(rootProject.libs.kotlinJvm)
 
     compileOnly(rootProject.libs.paperApi)
     compileOnly(rootProject.libs.placeholderApi)
-    implementation(rootProject.libs.bundles.simpleCloudController)
+    compileOnly(rootProject.libs.bundles.simpleCloudController)
 }
 
 tasks.shadowJar {
-    relocate("io.grpc", "app.simplecloud.relocate.grpc")
-    relocate("app.simplecloud.controller", "app.simplecloud.relocate.controller")
-    relocate("app.simplecloud.pubsub", "app.simplecloud.relocate.pubsub")
-    relocate("app.simplecloud.droplet", "app.simplecloud.relocate.droplet")
-    relocate("build.buf.gen", "app.simplecloud.relocate.buf")
-    relocate("com.google.protobuf", "app.simplecloud.relocate.protobuf")
+    mergeServiceFiles()
 }
 
 kotlin {
@@ -65,8 +60,10 @@ tasks.named("shadowJar", ShadowJar::class) {
 }
 
 tasks.processResources {
-    expand("version" to project.version,
-        "name" to project.name)
+    expand(
+        "version" to project.version,
+        "name" to project.name
+    )
 }
 
 tasks.test {

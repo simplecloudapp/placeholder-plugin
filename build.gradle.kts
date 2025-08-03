@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.minotaur)
 }
 
-val baseVersion = "0.0.1"
+val baseVersion = "0.0.2"
 val commitHash = System.getenv("COMMIT_HASH")
 val snapshotVersion = "${baseVersion}-dev.$commitHash"
 
@@ -92,7 +92,11 @@ modrinth {
         "1.21.1",
         "1.21.2",
         "1.21.3",
-        "1.21.4"
+        "1.21.4",
+        "1.21.5",
+        "1.21.6",
+        "1.21.7",
+        "1.21.8"
     )
     loaders.add("paper")
     changelog.set("https://docs.simplecloud.app/changelog")

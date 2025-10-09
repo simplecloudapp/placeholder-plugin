@@ -84,6 +84,7 @@ modrinth {
     versionType.set("beta")
     uploadFile.set(tasks.shadowJar)
     gameVersions.addAll(
+        
         "1.20",
         "1.20.1",
         "1.20.2",
@@ -101,6 +102,8 @@ modrinth {
         "1.21.7",
         "1.21.8",
         "1.21.9",
+        "1.21.10",
+
     )
     loaders.add("paper")
     loaders.add("purpur")

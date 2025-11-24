@@ -1,6 +1,6 @@
 package app.simplecloud.placeholder.plugin.paper.executor
 
-import app.simplecloud.controller.api.ControllerApi
+import app.simplecloud.api.CloudApi
 import app.simplecloud.placeholder.plugin.paper.executor.handler.PlaceholderControllerHandler
 import app.simplecloud.placeholder.plugin.paper.placeholder.Placeholder
 
@@ -12,20 +12,20 @@ abstract class PlaceholderExecutor<T>(
     private val controllerHandler: PlaceholderControllerHandler<T>
 ) {
 
-    abstract fun getPlaceholders(controllerApi: ControllerApi.Coroutine): List<Placeholder<T>>
+    abstract fun getPlaceholders(cloudApi: CloudApi): List<Placeholder<T>>
 
-    suspend fun executePlaceholder(key: String, controllerApi: ControllerApi.Coroutine): Any? {
-        val placeholder = getPlaceholder(controllerApi, key) ?: return null
-        val handle = this.controllerHandler.handle(controllerApi)
+    suspend fun executePlaceholder(key: String, cloudApi: CloudApi): Any? {
+        val placeholder = getPlaceholder(cloudApi, key) ?: return null
+        val handle = this.controllerHandler.handle(cloudApi)
         return placeholder.invoke(handle)
     }
 
-    private fun getPlaceholder(controllerApi: ControllerApi.Coroutine, key: String): Placeholder<T>? {
-        return getPlaceholders(controllerApi).firstOrNull { it.key == key }
+    private fun getPlaceholder(cloudApi: CloudApi, key: String): Placeholder<T>? {
+        return getPlaceholders(cloudApi).firstOrNull { it.key == key }
     }
 
-    fun hasPlaceholder(controllerApi: ControllerApi.Coroutine, key: String): Boolean {
-        return getPlaceholder(controllerApi, key) != null
+    fun hasPlaceholder(cloudApi: CloudApi, key: String): Boolean {
+        return getPlaceholder(cloudApi, key) != null
     }
 
 }

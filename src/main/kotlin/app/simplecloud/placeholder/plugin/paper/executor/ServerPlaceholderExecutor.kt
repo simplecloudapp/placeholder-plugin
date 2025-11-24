@@ -1,21 +1,22 @@
 package app.simplecloud.placeholder.plugin.paper.executor
 
-import app.simplecloud.controller.api.ControllerApi
-import app.simplecloud.controller.shared.server.Server
+import app.simplecloud.api.CloudApi
+import app.simplecloud.api.server.Server
 import app.simplecloud.placeholder.plugin.paper.placeholder.Placeholder
+import kotlinx.coroutines.future.await
 
 /**
  * @author Niklas Nieberler
  */
 
 class ServerPlaceholderExecutor : PlaceholderExecutor<Server>(
-    { it.getServers().getServerById(System.getenv("SIMPLECLOUD_UNIQUE_ID")) }
+    { it.server().getServerById(System.getenv("SIMPLECLOUD_UNIQUE_ID")).await() }
 ) {
 
-    override fun getPlaceholders(controllerApi: ControllerApi.Coroutine) = listOf<Placeholder<Server>>(
-        Placeholder("server_id") { it.uniqueId },
-        Placeholder("server_type") { it.type },
-        Placeholder("server_host") { it.host },
+    override fun getPlaceholders(cloudApi: CloudApi) = listOf<Placeholder<Server>>(
+        Placeholder("server_id") { it.serverId },
+        Placeholder("server_type") { it.serverGroup.type },
+        Placeholder("server_host") { it.serverhostId },
         Placeholder("server_numerical_id") { it.numericalId },
         Placeholder("server_ip") { it.ip },
         Placeholder("server_port") { it.port },

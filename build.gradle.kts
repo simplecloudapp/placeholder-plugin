@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.minotaur)
 }
 
-val baseVersion = "0.0.2"
+val baseVersion = "0.0.3"
 val commitHash = System.getenv("COMMIT_HASH")
 val snapshotVersion = "${baseVersion}-dev.$commitHash"
 
@@ -36,10 +36,11 @@ repositories {
 dependencies {
     testImplementation(rootProject.libs.kotlinTest)
     compileOnly(rootProject.libs.kotlinJvm)
+    compileOnly(rootProject.libs.kotlinX)
 
     compileOnly(rootProject.libs.paperApi)
     compileOnly(rootProject.libs.placeholderApi)
-    compileOnly(rootProject.libs.bundles.simpleCloudController)
+    compileOnly(rootProject.libs.bundles.simpleCloud)
 }
 
 tasks.shadowJar {

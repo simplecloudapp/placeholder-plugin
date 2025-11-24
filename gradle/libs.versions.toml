@@ -1,7 +1,8 @@
 [versions]
 kotlin = "2.0.0"
+kotlinX = "1.10.1"
 shadow = "8.3.3"
-simpleCloudController = "0.0.30-dev.e3e27fc"
+simpleCloudApi = "0.1.0-platform.1-dev.1763294516035-de96444"
 paper = "1.20.6-R0.1-SNAPSHOT"
 placeholder = "2.11.6"
 minotaur = "2.8.7"
@@ -9,15 +10,15 @@ minotaur = "2.8.7"
 [libraries]
 kotlinJvm = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlinX = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinX" }
 paperApi = { module = "io.papermc.paper:paper-api", version.ref = "paper" }
 
 placeholderApi = { module = "me.clip:placeholderapi", version.ref = "placeholder" }
 
-simpleCloudControllerApi = { module = "app.simplecloud.controller:controller-api", version.ref = "simpleCloudController" }
-simpleCloudControllerShared = { module = "app.simplecloud.controller:controller-shared", version.ref = "simpleCloudController" }
+simpleCloudApi = { module = "app.simplecloud.api:api", version.ref = "simpleCloudApi" }
 
 [bundles]
-simpleCloudController = ["simpleCloudControllerApi", "simpleCloudControllerShared"]
+simpleCloud = ["simpleCloudApi"]
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

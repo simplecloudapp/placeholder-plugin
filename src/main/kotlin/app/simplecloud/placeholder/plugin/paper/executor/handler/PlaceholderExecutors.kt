@@ -2,6 +2,7 @@ package app.simplecloud.placeholder.plugin.paper.executor.handler
 
 import app.simplecloud.api.CloudApi
 import app.simplecloud.placeholder.plugin.paper.executor.GroupPlaceholderExecutor
+import app.simplecloud.placeholder.plugin.paper.executor.PersistentServerPlaceholderExecutor
 import app.simplecloud.placeholder.plugin.paper.executor.ServerPlaceholderExecutor
 
 /**
@@ -12,6 +13,7 @@ object PlaceholderExecutors {
 
     private val executors = listOf(
         ServerPlaceholderExecutor(),
+        PersistentServerPlaceholderExecutor(),
         GroupPlaceholderExecutor()
     )
 

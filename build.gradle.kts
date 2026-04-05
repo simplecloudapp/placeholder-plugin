@@ -97,9 +97,15 @@ modrinth {
         "1.21.5",
         "1.21.6",
         "1.21.7",
-        "1.21.8"
+        "1.21.8",
+        "1.21.9",
+        "1.21.10",
+        "1.21.11",
+        "26.1",
+        "26.1.1"
     )
     loaders.add("paper")
+    loaders.add("purpur")
     changelog.set("https://docs.simplecloud.app/changelog")
     syncBodyFrom.set(rootProject.file("README.md").readText())
 }

@@ -1,6 +1,6 @@
 package app.simplecloud.placeholder.plugin.paper
 
-import app.simplecloud.controller.api.ControllerApi
+import app.simplecloud.api.CloudApi
 import org.bukkit.plugin.java.JavaPlugin
 
 /**
@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin
 class PaperPlugin : JavaPlugin() {
 
     override fun onEnable() {
-        val controllerApi = ControllerApi.createCoroutineApi()
-        SimpleCloudPlaceholderExpansion(controllerApi).register()
+        val cloudApi = CloudApi.create()
+        SimpleCloudPlaceholderExpansion(cloudApi).register()
     }
 }

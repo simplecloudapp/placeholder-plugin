@@ -1,6 +1,6 @@
 package app.simplecloud.placeholder.plugin.paper.executor.handler
 
-import app.simplecloud.controller.api.ControllerApi
+import app.simplecloud.api.CloudApi
 
 /**
  * @author Niklas Nieberler
@@ -8,6 +8,6 @@ import app.simplecloud.controller.api.ControllerApi
 
 fun interface PlaceholderControllerHandler<T> {
 
-    suspend fun handle(controllerApi: ControllerApi.Coroutine): T
+    suspend fun handle(cloudApi: CloudApi): T
 
 }

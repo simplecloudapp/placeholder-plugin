@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.minotaur)
 }
 
-val baseVersion = "0.0.1"
+val baseVersion = "0.0.4"
 val commitHash = System.getenv("COMMIT_HASH")
 val snapshotVersion = "${baseVersion}-dev.$commitHash"
 
@@ -35,20 +35,16 @@ repositories {
 
 dependencies {
     testImplementation(rootProject.libs.kotlinTest)
-    implementation(rootProject.libs.kotlinJvm)
+    compileOnly(rootProject.libs.kotlinJvm)
+    compileOnly(rootProject.libs.kotlinX)
 
     compileOnly(rootProject.libs.paperApi)
     compileOnly(rootProject.libs.placeholderApi)
-    implementation(rootProject.libs.bundles.simpleCloudController)
+    compileOnly(rootProject.libs.simplecloud)
 }
 
 tasks.shadowJar {
-    relocate("io.grpc", "app.simplecloud.relocate.grpc")
-    relocate("app.simplecloud.controller", "app.simplecloud.relocate.controller")
-    relocate("app.simplecloud.pubsub", "app.simplecloud.relocate.pubsub")
-    relocate("app.simplecloud.droplet", "app.simplecloud.relocate.droplet")
-    relocate("build.buf.gen", "app.simplecloud.relocate.buf")
-    relocate("com.google.protobuf", "app.simplecloud.relocate.protobuf")
+    mergeServiceFiles()
 }
 
 kotlin {
@@ -65,8 +61,10 @@ tasks.named("shadowJar", ShadowJar::class) {
 }
 
 tasks.processResources {
-    expand("version" to project.version,
-        "name" to project.name)
+    expand(
+        "version" to project.version,
+        "name" to project.name
+    )
 }
 
 tasks.test {
@@ -84,9 +82,6 @@ modrinth {
     versionType.set("beta")
     uploadFile.set(tasks.shadowJar)
     gameVersions.addAll(
-        
-        
-        
         "1.20",
         "1.20.1",
         "1.20.2",
@@ -107,10 +102,7 @@ modrinth {
         "1.21.10",
         "1.21.11",
         "26.1",
-        "26.1.1",
-
-
-
+        "26.1.1"
     )
     loaders.add("paper")
     loaders.add("purpur")

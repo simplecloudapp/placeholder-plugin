@@ -14,14 +14,15 @@ class PersistentServerPlaceholderExecutor : PlaceholderExecutor<PersistentServer
 ) {
 
     override fun getPlaceholders(cloudApi: CloudApi) = listOf<Placeholder<PersistentServer>>(
-        Placeholder("server_id") { it.persistentServerId },
-        Placeholder("server_type") { it.type },
-        Placeholder("server_host") { it.serverhostId },
-        Placeholder("server_max_players") { it.maxPlayers },
-        Placeholder("server_min_memory") { it.minMemory },
-        Placeholder("server_max_memory") { it.maxMemory },
-        Placeholder("server_player_count") { it.playerCount },
-        Placeholder("server_is_active") { it.isActive }
+        Placeholder("persistent_server_id") { it.persistentServerId },
+        Placeholder("persistent_server_name") { it.name },
+        Placeholder("persistent_server_type") { it.type },
+        Placeholder("persistent_server_host") { it.serverhostId },
+        Placeholder("persistent_server_max_players") { it.maxPlayers },
+        Placeholder("persistent_server_min_memory") { it.minMemory },
+        Placeholder("persistent_server_max_memory") { it.maxMemory },
+        Placeholder("persistent_server_player_count") { it.playerCount },
+        Placeholder("persistent_server_is_active") { it.isActive }
     )
 
 }

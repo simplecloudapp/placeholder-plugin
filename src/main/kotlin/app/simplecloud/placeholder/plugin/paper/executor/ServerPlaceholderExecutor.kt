@@ -15,7 +15,7 @@ class ServerPlaceholderExecutor : PlaceholderExecutor<Server>(
 
     override fun getPlaceholders(cloudApi: CloudApi) = listOf<Placeholder<Server>>(
         Placeholder("server_id") { it.serverId },
-        Placeholder("server_type") { it.group.type },
+        Placeholder("server_type") { it.serverBase.type },
         Placeholder("server_host") { it.serverhostId },
         Placeholder("server_numerical_id") { it.numericalId },
         Placeholder("server_ip") { it.ip },

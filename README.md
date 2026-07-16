@@ -27,6 +27,36 @@
 
 The placeholder plugin allows you to use all important parameters of the Controller API as placeholders with the help of the [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI). This allows you to retrieve all information about a server or group as a placeholder.
 
+## Targeting other resources
+
+The existing placeholders continue to return information about the current server, group, or persistent server:
+
+```text
+%simplecloud_server_player_count%
+%simplecloud_group_player_count%
+%simplecloud_persistent_server_player_count%
+```
+
+You can target another resource by inserting its selector before the property:
+
+```text
+%simplecloud_group_<group-name>_<property>%
+%simplecloud_persistent_server_<persistent-server-name>_<property>%
+%simplecloud_server_<group-name>:<numerical-id>_<property>%
+%simplecloud_server_id:<server-id>_<property>%
+```
+
+For example:
+
+```text
+%simplecloud_group_Lobby_player_count%
+%simplecloud_persistent_server_MainLobby_is_active%
+%simplecloud_server_Lobby:1_state%
+%simplecloud_server_id:550e8400-e29b-41d4-a716-446655440000_player_count%
+```
+
+Group and persistent-server names may contain underscores. If the selected resource does not exist or the selector is invalid, the placeholder cannot be resolved.
+
 ## Contributing
 Contributions to SimpleCloud are welcome and highly appreciated. However, before you jump right into it, we would like you to read our [Contribution Guide][docs-contribute].
 

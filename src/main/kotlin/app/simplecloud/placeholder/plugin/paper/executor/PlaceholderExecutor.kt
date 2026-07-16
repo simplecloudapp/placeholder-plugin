@@ -15,8 +15,12 @@ abstract class PlaceholderExecutor<T>(
     abstract fun getPlaceholders(cloudApi: CloudApi): List<Placeholder<T>>
 
     suspend fun executePlaceholder(key: String, cloudApi: CloudApi): Any? {
-        val placeholder = getPlaceholder(cloudApi, key) ?: return null
         val handle = this.controllerHandler.handle(cloudApi)
+        return executePlaceholder(key, cloudApi, handle)
+    }
+
+    suspend fun executePlaceholder(key: String, cloudApi: CloudApi, handle: T): Any? {
+        val placeholder = getPlaceholder(cloudApi, key) ?: return null
         return placeholder.invoke(handle)
     }
 

@@ -11,14 +11,15 @@ import kotlinx.coroutines.runBlocking
  */
 
 class SimpleCloudPlaceholderExpansion(
-    private val cloudApi: CloudApi
+    private val cloudApi: CloudApi,
+    private val pluginVersion: String
 ) : PlaceholderExpansion() {
 
     override fun getIdentifier() = "simplecloud"
 
     override fun getAuthor() = "MrManHD"
 
-    override fun getVersion() = "1.1-SNAPSHOT"
+    override fun getVersion() = pluginVersion
 
     override fun canRegister() = true
 

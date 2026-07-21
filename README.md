@@ -27,6 +27,8 @@
 
 The placeholder plugin allows you to use all important parameters of the Controller API as placeholders with the help of the [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI). This allows you to retrieve all information about a server or group as a placeholder.
 
+The plugin supports Paper, Purpur, and Folia. Folia installations require PlaceholderAPI 2.11.7 or newer.
+
 ## Targeting other resources
 
 The existing placeholders continue to return information about the current server, group, or persistent server:

@@ -4,7 +4,7 @@ kotlinX = "1.10.1"
 shadow = "8.3.3"
 simplecloud = "0.1.0-platform.22-dev.1774376168759-1e20f57"
 paper = "1.21.11-R0.1-SNAPSHOT"
-placeholder = "2.11.6"
+placeholder = "2.12.3"
 minotaur = "2.8.7"
 
 [libraries]

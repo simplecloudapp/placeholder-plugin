@@ -9,8 +9,16 @@ import org.bukkit.plugin.java.JavaPlugin
 
 class PaperPlugin : JavaPlugin() {
 
+    private lateinit var cloudApi: CloudApi
+
     override fun onEnable() {
-        val cloudApi = CloudApi.create()
-        SimpleCloudPlaceholderExpansion(cloudApi).register()
+        cloudApi = CloudApi.create()
+        SimpleCloudPlaceholderExpansion(cloudApi, pluginMeta.version).register()
+    }
+
+    override fun onDisable() {
+        if (::cloudApi.isInitialized) {
+            cloudApi.close()
+        }
     }
 }

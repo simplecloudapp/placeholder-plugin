@@ -1,13 +1,13 @@
-name: SimpleCloud-Placeholder
+name: simplecloud-placeholder
 version: ${version}
 author: MrManHD
 main: app.simplecloud.placeholder.plugin.paper.PaperPlugin
 folia-supported: true
 
 libraries:
-  - "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0"
-  - "org.jetbrains.kotlin:kotlin-stdlib:2.0.20"
-  - "org.jetbrains.kotlin:kotlin-reflect:2.0.20"
+  - "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0"
+  - "org.jetbrains.kotlin:kotlin-stdlib:2.4.10"
+  - "org.jetbrains.kotlin:kotlin-reflect:2.4.10"
 
 depend:
   - PlaceholderAPI

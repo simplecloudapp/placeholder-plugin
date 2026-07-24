@@ -1,21 +1,24 @@
 [versions]
-kotlin = "2.0.0"
-kotlinX = "1.10.1"
-shadow = "8.3.3"
-simplecloud = "0.1.0-platform.22-dev.1774376168759-1e20f57"
-paper = "1.21.11-R0.1-SNAPSHOT"
+kotlin = "2.4.10"
+kotlinx-coroutines = "1.11.0"
+
+shadow = "9.5.1"
+minotaur = "2.9.0"
+
+simplecloud = "0.1.0-platform.40"
+
+paper = "26.1.2.build.+"
 placeholder = "2.12.3"
-minotaur = "2.8.7"
 
 [libraries]
-kotlinJvm = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
-kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
-kotlinX = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinX" }
-paperApi = { module = "io.papermc.paper:paper-api", version.ref = "paper" }
-
-placeholderApi = { module = "me.clip:placeholderapi", version.ref = "placeholder" }
+kotlin-jvm = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 
 simplecloud = { module = "app.simplecloud.api:api", version.ref = "simplecloud" }
+
+paper-api = { module = "io.papermc.paper:paper-api", version.ref = "paper" }
+placeholder-api = { module = "me.clip:placeholderapi", version.ref = "placeholder" }
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

@@ -25,7 +25,7 @@
 
 > All information about this project can be found in our detailed [documentation][docs-thisproject].
 
-The placeholder plugin allows you to use all important parameters of the Controller API as placeholders with the help of the [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI). This allows you to retrieve all information about a server or group as a placeholder.
+The placeholder plugin allows you to use all important parameters of the Cloud API as placeholders with the help of the [PlaceholderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI). This allows you to retrieve all information about a server or group as a placeholder.
 
 The plugin supports Paper, Purpur, and Folia. Folia installations require PlaceholderAPI 2.11.7 or newer.
 
@@ -70,9 +70,9 @@ This repository is licensed under [Apache 2.0][license].
 
 <!-- ✅ PLEASE EDIT -->
 [banner]: https://raw.githubusercontent.com/simplecloudapp/branding/refs/heads/main/readme/banner/plugin/placeholders.png
-[issue-bug-report]: https://github.com/theSimpleCloud/placeholder-plugin/issues/new?labels=bug&projects=template=01_BUG-REPORT.yml&title=%5BBUG%5D+%3Ctitle%3E
-[issue-feature-request]: https://github.com/theSimpleCloud/placeholder-plugin/discussions/new?category=ideas
-[docs-thisproject]: https://docs.simplecloud.app/plugin/placeholder
+[issue-bug-report]: https://github.com/simplecloudapp/placeholder-plugin/issues/new?labels=bug&projects=template=01_BUG-REPORT.yml&title=%5BBUG%5D+%3Ctitle%3E
+[issue-feature-request]: https://github.com/simplecloudapp/placeholder-plugin/discussions/new?category=ideas
+[docs-thisproject]: https://docs.simplecloud.app/en/manual/plugin/placeholders
 [docs-contribute]: https://docs.simplecloud.app/contribute
 
 [modrinth]: https://modrinth.com/plugin/placeholder-plugin

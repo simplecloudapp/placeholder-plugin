@@ -1,5 +1,5 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     alias(libs.plugins.kotlin)
@@ -7,74 +7,60 @@ plugins {
     alias(libs.plugins.minotaur)
 }
 
-val baseVersion = "0.0.7"
+val baseVersion = "0.0.8"
 val commitHash = System.getenv("COMMIT_HASH")
-val snapshotVersion = "${baseVersion}-dev.$commitHash"
+val snapshotVersion = "$baseVersion-dev.$commitHash"
 
 group = "app.simplecloud.plugin"
 version = if (commitHash != null) snapshotVersion else baseVersion
 
 repositories {
     mavenCentral()
-    mavenLocal()
-    maven {
-        url = uri("https://oss.sonatype.org/content/repositories/snapshots")
-    }
-    maven {
-        url = uri("https://libraries.minecraft.net")
-    }
-    maven {
-        url = uri("https://repo.papermc.io/repository/maven-public/")
-    }
-    maven {
-        url = uri("https://repo.extendedclip.com/releases/")
-    }
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
+    maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://repo.extendedclip.com/releases/")
     maven("https://repo.simplecloud.app/snapshots")
     maven("https://buf.build/gen/maven")
 }
 
 dependencies {
-    testImplementation(rootProject.libs.kotlinTest)
-    testImplementation(rootProject.libs.kotlinX)
-    testImplementation(rootProject.libs.simplecloud)
-    compileOnly(rootProject.libs.kotlinJvm)
-    compileOnly(rootProject.libs.kotlinX)
-
-    compileOnly(rootProject.libs.paperApi)
-    compileOnly(rootProject.libs.placeholderApi)
+    compileOnly(rootProject.libs.kotlin.jvm)
+    compileOnly(rootProject.libs.kotlin.coroutines.core)
+    compileOnly(rootProject.libs.paper.api)
+    compileOnly(rootProject.libs.placeholder.api)
     compileOnly(rootProject.libs.simplecloud)
-}
 
-tasks.shadowJar {
-    mergeServiceFiles()
+    testImplementation(rootProject.libs.kotlin.test)
+    testImplementation(rootProject.libs.kotlin.coroutines.core)
+    testImplementation(rootProject.libs.simplecloud)
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_25
+        languageVersion = KotlinVersion.KOTLIN_2_4
+        apiVersion = KotlinVersion.KOTLIN_2_4
+    }
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "21"
-}
-
-tasks.named("shadowJar", ShadowJar::class) {
-    mergeServiceFiles()
-    archiveFileName.set("${project.name}.jar")
-}
-
-tasks.processResources {
-    expand(
-        "version" to project.version,
-        "name" to project.name
-    )
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(25))
 }
 
 tasks.test {
     useJUnitPlatform()
 }
 
-kotlin {
-    jvmToolchain(21)
+tasks.shadowJar {
+    mergeServiceFiles()
+    archiveFileName.set("${project.name}.jar")
+}
+
+tasks.processResources {
+    expand(
+        "version" to project.version
+    )
 }
 
 modrinth {
@@ -108,9 +94,7 @@ modrinth {
         "26.1.2",
         "26.2",
     )
-    loaders.add("paper")
-    loaders.add("purpur")
-    loaders.add("folia")
+    loaders.addAll("paper", "purpur", "folia")
     changelog.set("https://docs.simplecloud.app/changelog")
     syncBodyFrom.set(rootProject.file("README.md").readText())
 }
